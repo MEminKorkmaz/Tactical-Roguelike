@@ -65,12 +65,10 @@ public class Pathfinding : MonoBehaviour
         {
             x++;
             EnemyPathTiles.Add(current);
-            // Debug.Log(current.transform.position);
             if (current.GetComponent<Tiles>().parent != null)
                 current = current.GetComponent<Tiles>().parent;
             else
             {
-                Debug.Log("Break");
                 break;
             }
         }
@@ -105,7 +103,6 @@ public class Pathfinding : MonoBehaviour
     
         while (openSet.Count > 0)
         {
-            // Debug.Log("HOW MANY TIMES");
             GameObject currentTile = openSet.Dequeue();
 
             foreach (GameObject adjacentTile in GetAdjacentTiles(currentTile , isMovement))
@@ -293,12 +290,10 @@ public class Pathfinding : MonoBehaviour
         {
             x++;
             PathTiles.Add(current);
-            // Debug.Log(current.transform.position);
             if (current.GetComponent<Tiles>().parent != null)
                 current = current.GetComponent<Tiles>().parent;
             else
             {
-                Debug.Log("Break");
                 break;
             }
         }

@@ -112,10 +112,6 @@ public class ForrestBat : MonoBehaviour
 
     void Update()
     {
-        // Debug.Log(CanMove);
-        // Debug.Log("CAN ACTION " + enemyAction.CanAction + " IS ENEMY DONE " + enemyAction.isEnemyDone
-        // + " TURN " + turnManager.Turn + " DURING TURN " + turnManager.isDuringTurn + " ENEMY INDEX " + 
-        // GameObject.FindWithTag("GameManager").GetComponent<EnemyAIManager>().EnemyIndex);
         
         HealthBar.text = enemyStats.CurrentHealth.ToString();
         if(transform.localScale.x == -1f)
@@ -273,8 +269,6 @@ public class ForrestBat : MonoBehaviour
         // TempClosestEnemy = null;
         Enemies = GameObject.FindGameObjectsWithTag("Ally");
 
-        // Debug.Log("BEFORE " + EnemiesInSight.Count);
-
         for(int i = 0; i < Enemies.Length; i++){
             RaycastHit2D[] hitLOS;
                     hitLOS = Physics2D.RaycastAll(transform.position, Enemies[i].transform.position - transform.position);
@@ -296,8 +290,6 @@ public class ForrestBat : MonoBehaviour
                     }
                 }
 
-                // Debug.Log("AFTER " + EnemiesInSight.Count);
-
                 if(EnemiesInSight.Count == 0){
                     isAttackInRangeBool = false;
                     return;
@@ -306,10 +298,6 @@ public class ForrestBat : MonoBehaviour
                 else{
                     isAttackInRangeBool = true;
                 }
-
-                // for(int i = 0; i < EnemiesInSight.Count; i++){
-                //     EnemiesInSight[i].transform.gameObject.GetComponent<AllyTargeted>().isAllyTargeted = true;
-                // }
     }
 
 

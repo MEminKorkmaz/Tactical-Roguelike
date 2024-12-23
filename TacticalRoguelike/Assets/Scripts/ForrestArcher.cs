@@ -100,33 +100,12 @@ public class ForrestArcher : MonoBehaviour
         CheckForCooldowns();
 
         if(turnManager.Turn == 1 || turnManager.isDuringTurn) return;
-
-        // if(Input.GetKeyDown(KeyCode.Alpha4)){
-        //     MovementSkill();
-        // }
-
-        // if(Input.GetKeyDown(KeyCode.Alpha2)){
-        //     CanAction = true;
-        // }
-
-        // if(Input.GetKeyDown(KeyCode.Alpha5)){
             if(!enemyAction.CanAction) return;
             EnemiesInSight.Clear();
 
             StartCoroutine("Skills");
 
             enemyAction.CanAction = false;
-            // Debug.Log(EnemiesInSight.Count);
-
-            // isAttackInRange();
-            // if(isAttackInRangeBool)
-            // AttackSkill();
-            // else if(!isAttackInRangeBool)
-            // MovementSkill();
-            
-            // enemyAction.CanAction = false;
-            // enemyAction.isEnemyDone = true;
-        // }
     }
 
     void FixedUpdate(){
@@ -138,10 +117,7 @@ public class ForrestArcher : MonoBehaviour
     private bool isUsingSkill;
     IEnumerator Skills(){
         isUsingSkill = false;
-        // int i = 0;
         while(!isUsingSkill){
-            // Debug.Log("ARCHER");
-            // i++;
             yield return new WaitForSeconds(0.25f);
             isUsingSkill = true;
         
@@ -244,43 +220,9 @@ public class ForrestArcher : MonoBehaviour
     private float distanceOfEnemyInSight;
     private bool isEnemySeen;
     public void isAttackInRange(){
-        // TempClosestEnemy = GetClosestEnemy();
-
-        // if(TempClosestEnemy == null) return;
-
-        // float distance = Vector2.Distance(transform.position , TempClosestEnemy.position);
-
-        // if(distance <= AttackRange){
-        //     RaycastHit2D[] hitLOS;
-        //         hitLOS = Physics2D.RaycastAll(transform.position, TempClosestEnemy.position - transform.position);
-        //         for(int i = 0; i < hitLOS.Length; i++)
-        //         {
-        //             if(hitLOS[i].collider.tag == "Archer"){
-        //                 for(int j = 0; j < i; j++){
-        //                     if(hitLOS[j].collider.tag == "Obstacle")
-        //                     {
-        //                         isAttackInRangeBool = false;
-        //                         return;
-        //                         // Not in line of sight
-        //                     }
-        //                 }
-        //             }
-        //         }
-        //     TempClosestEnemy.gameObject.GetComponent<AllyTargeted>().isAllyTargeted = true;
-        //     isAttackInRangeBool = true;
-        // }
-        // else{
-        //     isAttackInRangeBool = false;
-        // }
 
         TempClosestEnemy = null;
         Enemies = GameObject.FindGameObjectsWithTag("Ally");
-
-        // for(int i = 0; i < Enemies.Length; i++){
-        //     EnemiesInSight.Add(Enemies[i]);
-        // }
-
-        // Debug.Log("BEFORE " + EnemiesInSight.Count);
 
         for(int i = 0; i < Enemies.Length; i++){
             RaycastHit2D[] hitLOS;
@@ -292,9 +234,6 @@ public class ForrestArcher : MonoBehaviour
                                 for(int k = 0; k < j; k++){
                                 if(hitLOS[k].collider.tag == "Obstacle")
                                 {
-                                    // Debug.Log(EnemiesInSight[0] + " AND THAT IS I " + i);
-                                    // EnemiesInSight.RemoveAt(i);
-                                    // break;
                                     isEnemySeen = false;
                                     // Not in line of sight
                                 }
@@ -305,9 +244,6 @@ public class ForrestArcher : MonoBehaviour
                         }
                     }
                 }
-
-                // Debug.Log("AFTER " + EnemiesInSight.Count);
-                // Debug.Log("AFTER " + EnemiesInSight[0]);
 
                 if(EnemiesInSight.Count == 0){
                     isAttackInRangeBool = false;
@@ -381,7 +317,6 @@ public class ForrestArcher : MonoBehaviour
         pf.EnemyFindPaths(ground.children[TempTile].gameObject , MoveRange , true);
 
         // ENEMY MOVABLE
-        // Debug.Log(pf.EnemyActionTile.Count);
 
         for(int i = 0; i < pf.EnemyActionTile.Count; i++){
             if(TempTransformForClosestEnemy != null)
@@ -411,7 +346,6 @@ public class ForrestArcher : MonoBehaviour
         }
         
         CanMove = true;
-        // Debug.Log("Distance : " + closestDistance);
 
         pf.EnemyMakePath(TempGo , ground.children[TempTile].gameObject);
         MoveListCount = 0;

@@ -116,12 +116,6 @@ public class HealerSkills : MonoBehaviour
         if(NormalAttackCooldown == 0) return;
         TempNormalAttackTurnCounter = turnManager.TurnCounter + NormalAttackCooldown;
         Debug.Log(TempNormalAttackTurnCounter);
-        // TEMPORARY
-
-        // GameObject go = Instantiate(NormalAttackProjectilePrefab , EnemyPos , Quaternion.Euler(0f , 0f , 180f));
-        // ground.UnHighlighTheMovableGrids();
-
-        // TEMPORARY
     }
 
     // TEMPORARY

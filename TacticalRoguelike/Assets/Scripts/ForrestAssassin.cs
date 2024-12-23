@@ -194,8 +194,6 @@ public class ForrestAssassin : MonoBehaviour
         transform.localScale = new Vector3(-transform.localScale.x , transform.localScale.y , transform.localScale.z);
         }
 
-        // Debug.Log("That's Where It Goes");
-
         anim.SetTrigger("Attack");
         StartCoroutine("Attack");
     }
@@ -241,8 +239,6 @@ public class ForrestAssassin : MonoBehaviour
     public void isAttackInRange(){
         TempClosestEnemy = null;
         Enemies = GameObject.FindGameObjectsWithTag("Ally");
-
-        // Debug.Log(EnemiesInSight.Count);
 
         for(int i = 0; i < Enemies.Length; i++){
             RaycastHit2D[] hitLOS;
@@ -386,7 +382,6 @@ public class ForrestAssassin : MonoBehaviour
         }
 
         CanMove = true;
-        // Debug.Log("Distance : " + closestDistance);
 
         pf.EnemyMakePath(TempGo , ground.children[TempTile].gameObject);
         MoveListCount = 0;

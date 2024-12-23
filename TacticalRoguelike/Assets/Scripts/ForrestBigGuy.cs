@@ -217,56 +217,8 @@ public class ForrestBigGuy : MonoBehaviour
     private float distanceOfEnemyInSight;
     private bool isEnemySeen;
     public void isAttackInRange(){
-        // TempClosestEnemy = GetClosestEnemy();
-
-        // RaycastHit2D[] hitLOS2;
-        //         hitLOS2 = Physics2D.RaycastAll(transform.position, TempClosestEnemy.position - transform.position);
-        //         for(int i = 0; i < hitLOS2.Length; i++)
-        //         {
-        //             if(hitLOS2[i].collider.tag == "Archer"){
-        //                 for(int j = 0; j < i; j++){
-        //                     if(hitLOS2[j].collider.tag == "Obstacle")
-        //                     {
-        //                         isOutOfSight = true;
-        //                         break;
-        //                         // Not in line of sight
-        //                     }
-        //                     isOutOfSight = false;
-        //                 }
-        //             }
-        //         }
-
-        // float distance = Vector2.Distance(transform.position , TempClosestEnemy.position);
-        // if(distance <= AttackRange){
-        //     RaycastHit2D[] hitLOS;
-        //         hitLOS = Physics2D.RaycastAll(transform.position, TempClosestEnemy.position - transform.position);
-        //         for(int i = 0; i < hitLOS.Length; i++)
-        //         {
-        //             if(hitLOS[i].collider.tag == "Archer"){
-        //                 for(int j = 0; j < i; j++){
-        //                     if(hitLOS[j].collider.tag == "Obstacle")
-        //                     {
-        //                         isAttackInRangeBool = false;
-        //                         return;
-        //                         // Not in line of sight
-        //                     }
-        //                 }
-        //             }
-        //         }
-        //     TempClosestEnemy.gameObject.GetComponent<AllyTargeted>().isAllyTargeted = true;
-        //     isAttackInRangeBool = true;
-        // }
-        // else{
-        //     isAttackInRangeBool = false;
-        // }
         TempClosestEnemy = null;
         Enemies = GameObject.FindGameObjectsWithTag("Ally");
-
-        // for(int i = 0; i < Enemies.Length; i++){
-        //     EnemiesInSight.Add(Enemies[i]);
-        // }
-
-        // Debug.Log("BEFORE " + EnemiesInSight.Count);
 
         for(int i = 0; i < Enemies.Length; i++){
             RaycastHit2D[] hitLOS;
@@ -278,9 +230,6 @@ public class ForrestBigGuy : MonoBehaviour
                                 for(int k = 0; k < j; k++){
                                 if(hitLOS[k].collider.tag == "Obstacle")
                                 {
-                                    // Debug.Log(EnemiesInSight[0] + " AND THAT IS I " + i);
-                                    // EnemiesInSight.RemoveAt(i);
-                                    // break;
                                     isEnemySeen = false;
                                     // Not in line of sight
                                 }
@@ -291,9 +240,6 @@ public class ForrestBigGuy : MonoBehaviour
                         }
                     }
                 }
-
-                // Debug.Log("AFTER " + EnemiesInSight.Count);
-                // Debug.Log("AFTER " + EnemiesInSight[0]);
 
                 if(EnemiesInSight.Count == 0){
                     isAttackInRangeBool = false;
@@ -368,7 +314,6 @@ public class ForrestBigGuy : MonoBehaviour
         pf.EnemyFindPaths(ground.children[TempTile].gameObject , MoveRange , true);
 
         // ENEMY MOVABLE
-        // Debug.Log(pf.EnemyActionTile.Count);
 
         for(int i = 0; i < pf.EnemyActionTile.Count; i++){
             if(TempTransformForClosestEnemy != null)
@@ -384,8 +329,6 @@ public class ForrestBigGuy : MonoBehaviour
         }
 
         closestDistance = TempEnemyMovementTileDistance[0];
-        // Debug.Log(pf.EnemyActionTile[0]);
-        // Debug.Log("OKAY" + " " + closestDistance);
 
         for(int i = 0; i < TempEnemyMovementTileDistance.Count; i++){
             if(TempEnemyMovementTileDistance[i] < closestDistance && TempEnemyMovementTileDistance[i] > ProtectedRange){
@@ -397,26 +340,7 @@ public class ForrestBigGuy : MonoBehaviour
         if(closestDistance == TempEnemyMovementTileDistance[0])
             TempGo = pf.EnemyActionTile[0];
 
-        // Debug.Log(TempGo);
         CanMove = true;
-        // Debug.Log("Distance : " + closestDistance);
-
-        // if(isOutOfSight){
-        //     // int tempPlaceToGo = Random.Range(0 , pf.EnemyActionTile.Count);
-            
-        //     for(int i = 0; i < pf.EnemyActionTile.Count; i++){
-        //         if(TempEnemyMovementTileDistance[i] < 5f && TempEnemyMovementTileDistance[i] > 2f){
-        //             TempGo = pf.EnemyActionTile[i];
-        //             break;
-        //         }
-
-        //         else{
-        //             int tempPlaceToGo = Random.Range(0 , pf.EnemyActionTile.Count);
-        //             TempGo = pf.EnemyActionTile[tempPlaceToGo];
-        //         }
-        //     }
-        //     // TempGo = pf.EnemyActionTile[tempPlaceToGo];
-        // }
 
         pf.EnemyMakePath(TempGo , ground.children[TempTile].gameObject);
         MoveListCount = 0;

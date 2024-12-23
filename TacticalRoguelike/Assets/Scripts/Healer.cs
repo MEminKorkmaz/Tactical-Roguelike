@@ -238,10 +238,8 @@ public class Healer : MonoBehaviour
                 healerSkills.NormalAttack(EnemyPos);
             }
         
-        // Debug.Log(hit.tag);
         if(hit.tag == "Ally" && healerSkills.isHealingSelected)
             {
-                // if(hit.gameObject.GetComponent<EnemyAttackableCheck>().CurrentTile.GetComponent<Tiles>().isAttackable) return;
                 
                 if(!hit.gameObject.GetComponent<AllyActionableCheck>().CurrentTile.GetComponent<Tiles>().isActionable) return;
 
@@ -261,7 +259,6 @@ public class Healer : MonoBehaviour
                                 Destroy(go , 5f);
                                 
                                 isAllyFound = false;
-                                Debug.Log("MAAAAAN");
                                 return;
                                 // Not in line of sight
                             }

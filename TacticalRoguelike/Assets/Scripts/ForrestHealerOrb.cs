@@ -20,22 +20,7 @@ public class ForrestHealerOrb : MonoBehaviour
 
 
     void Awake(){
-        // Damage = GetComponentInParent<EnemyStats>().Damage;
-        // critMultiplier = GetComponentInParent<EnemyStats>().CritMultiplier;
-        // critChance = GetComponentInParent<EnemyStats>().CritChance;
 
-        // int minDamage = Damage - ((Damage * 10) / 100);
-        // int maxDamage = Damage + ((Damage * 10) / 100);
-
-        // Damage = Random.Range(minDamage , maxDamage + 1);
-
-        // int rnd = Random.Range(0 , 100);
-        // if(rnd < critChance){
-        //     isCritic = true;
-        // }
-        // else{
-        //     isCritic = false;
-        // }
     }
     void Start()
     {
@@ -62,8 +47,6 @@ public class ForrestHealerOrb : MonoBehaviour
 
     public Vector3 EnemyPos;
     void Move(){
-        // rb.velocity = transform.up * Speed * Time.fixedDeltaTime;
-
         Vector2 dir = (Vector2)EnemyPos - rb.position;
         dir.Normalize();
         float rotateAmount = Vector3.Cross(dir , transform.up).z;
@@ -91,7 +74,6 @@ public class ForrestHealerOrb : MonoBehaviour
                 Damage = 0;
                 Debug.Log("Miss");
             }
-            // Debug.Log(Damage);
 
             if(Damage == 0){
                 GameObject TempText = Instantiate(textPrefab , col.transform.position , Quaternion.identity);
@@ -111,9 +93,6 @@ public class ForrestHealerOrb : MonoBehaviour
             }
 
             col.gameObject.GetComponent<AllyTargeted>().isAllyTargeted = false;
-            // int def = col.gameObject.GetComponent<EnemyStats>().Defence;
-            // def = def / 5;
-            // TempDamage = Damage - ((Damage * def) / 100);
             
             // TEMPORARY
             GameObject TempGo = transform.GetChild(0).gameObject;
@@ -124,7 +103,6 @@ public class ForrestHealerOrb : MonoBehaviour
             Destroy(TempGo , 2f);
             // TEMPORARY
 
-            // Debug.Log(col.gameObject.name);
             col.gameObject.GetComponent<AllyTakeDamage>().GetDamage(Damage);
             GameObject go = Instantiate(ForrestHealerOrbFx , transform.position , transform.rotation);
             Destroy(go , 5f);

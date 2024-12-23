@@ -81,7 +81,6 @@ public class ArcherProjectile : MonoBehaviour
             GameObject.FindWithTag("GameManager").GetComponent<TurnManager>().isDuringTurn = false;
 
             int missChance = col.gameObject.GetComponent<EnemyStats>().Evasion;
-            // Debug.Log(Damage + "MAIN");
 
             if(isCritic)
             Damage = Damage + ((Damage * critMultiplier) / 100);
@@ -89,14 +88,11 @@ public class ArcherProjectile : MonoBehaviour
             int def = col.gameObject.GetComponent<EnemyStats>().Defence;
             Damage = Damage - ((Damage * def) / 100);
 
-            // Debug.Log(Damage + "AFTER DEF");
-
             int rnd = Random.Range(0 , 100);
             if(rnd < missChance){
                 Damage = 0;
                 Debug.Log("Miss");
             }
-            // Debug.Log(Damage);
 
             if(Damage == 0){
                 GameObject TempText = Instantiate(textPrefab , col.transform.position , Quaternion.identity);
@@ -116,9 +112,6 @@ public class ArcherProjectile : MonoBehaviour
             }
 
             col.gameObject.GetComponent<EnemyTargeted>().isEnemyTargeted = false;
-            // int def = col.gameObject.GetComponent<EnemyStats>().Defence;
-            // def = def / 5;
-            // TempDamage = Damage - ((Damage * def) / 100);
             
             // TEMPORARY
             GameObject TempGo = transform.GetChild(1).gameObject;
@@ -127,7 +120,6 @@ public class ArcherProjectile : MonoBehaviour
             Destroy(TempGo , 2f);
             // TEMPORARY
 
-            // Debug.Log(col.gameObject.name);
             col.gameObject.GetComponent<EnemyTakeDamage>().GetDamage(Damage);
             GameObject go = Instantiate(ArrowFxPrefab , transform.position , transform.rotation);
             Destroy(go , 5f);

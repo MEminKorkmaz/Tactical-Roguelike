@@ -184,24 +184,11 @@ public class Archer : MonoBehaviour
                 {
                     if(isEnemyFound) break; // ENEMY ARCHER TOO
                     if(hitLOS[i].collider.tag == "Enemy"){
-                        // Debug.Log("I " + i);
                         isEnemyFound = true;
                         for(int j = 0; j < i; j++){
                             if(hitLOS[j].collider.tag == "Obstacle")
                             {
-                                // Debug.Log("J " + j);
-                                // Debug.Log(hitLOS[0].collider.name);
-                                // Debug.Log(hitLOS[1].collider.name);
-                                // Debug.Log(hitLOS[2].collider.name);
-                                // Debug.Log(hitLOS[3].collider.name);
-                                // Debug.Log(hitLOS[4].collider.name);
-                                // Vector3 Temp = new Vector3(transform.position.x , transform.position.y + 3f , transform.position.z);
-                                // GameObject go = Instantiate(OutOfSightTextPrefab , transform.position , Quaternion.identity);
-                                // Destroy(go , 5f);
-                                // Out of sight -- Make original prefab with different animation
                                 GameObject go = Instantiate(OutOfSightTextPrefab , transform.position , Quaternion.identity);
-                                // go.transform.GetChild(0).gameObject.GetComponent<RectTransform>().height = 1f;
-                                // go.transform.GetChild(0).gameObject.GetComponent<RectTransform>().width = 2f;
                                 go.transform.GetChild(0).gameObject.GetComponent<RectTransform>().sizeDelta = new Vector2(2f , 1f);
                                 go.transform.gameObject.GetComponent<RectTransform>().localScale = new Vector2(1f , 1f);
                                 go.transform.GetChild(0).gameObject.GetComponent<Text>().text = "Out Of Sight";

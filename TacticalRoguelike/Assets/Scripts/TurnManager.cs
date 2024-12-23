@@ -38,7 +38,6 @@ public class TurnManager : MonoBehaviour
 
     void Update()
     {
-        // Debug.Log("TURNS : " + TurnCounter);
         if(isDuringTurn) return;
         CheckGameStatus();
     }

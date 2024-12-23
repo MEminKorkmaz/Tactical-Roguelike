@@ -408,8 +408,6 @@ public class ForrestHealer : MonoBehaviour
         TempClosestEnemy = null;
         Enemies = GameObject.FindGameObjectsWithTag("Ally");
 
-        // Debug.Log("BEFORE " + EnemiesInSight.Count);
-
         for(int i = 0; i < Enemies.Length; i++){
             RaycastHit2D[] hitLOS;
                     hitLOS = Physics2D.RaycastAll(transform.position, Enemies[i].transform.position - transform.position);
@@ -430,8 +428,6 @@ public class ForrestHealer : MonoBehaviour
                         }
                     }
                 }
-
-                // Debug.Log("AFTER " + EnemiesInSight.Count);
 
                 if(EnemiesInSight.Count == 0){
                     isAttackInRangeBool = false;
@@ -512,9 +508,6 @@ public class ForrestHealer : MonoBehaviour
 
         pf.EnemyFindPaths(ground.children[TempTile].gameObject , MoveRange , true);
 
-        // ENEMY MOVABLE
-        // Debug.Log(pf.EnemyActionTile.Count);
-
         if(!isInAttackMode)
         {
             for(int i = 0; i < pf.EnemyActionTile.Count; i++)
@@ -562,7 +555,6 @@ public class ForrestHealer : MonoBehaviour
         }
         
         CanMove = true;
-        // Debug.Log("Distance : " + closestDistance);
 
         pf.EnemyMakePath(TempGo , ground.children[TempTile].gameObject);
         MoveListCount = 0;

@@ -91,7 +91,6 @@ public class ForrestArcherArrow : MonoBehaviour
                 Damage = 0;
                 Debug.Log("Miss");
             }
-            // Debug.Log(Damage);
 
             if(Damage == 0){
                 GameObject TempText = Instantiate(textPrefab , col.transform.position , Quaternion.identity);
@@ -111,9 +110,6 @@ public class ForrestArcherArrow : MonoBehaviour
             }
 
             col.gameObject.GetComponent<AllyTargeted>().isAllyTargeted = false;
-            // int def = col.gameObject.GetComponent<EnemyStats>().Defence;
-            // def = def / 5;
-            // TempDamage = Damage - ((Damage * def) / 100);
             
             // TEMPORARY
             GameObject TempGo = transform.GetChild(1).gameObject;
@@ -124,7 +120,6 @@ public class ForrestArcherArrow : MonoBehaviour
             Destroy(TempGo , 2f);
             // TEMPORARY
 
-            // Debug.Log(col.gameObject.name);
             col.gameObject.GetComponent<AllyTakeDamage>().GetDamage(Damage);
             GameObject go = Instantiate(ForrestArcherArrowFxPrefab , transform.position , transform.rotation);
             Destroy(go , 5f);
